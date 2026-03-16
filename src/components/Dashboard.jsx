@@ -17,13 +17,13 @@ export function Dashboard({ junior, seniors, activities, messages }) {
       <section className="lg:col-span-2 space-y-4">
         <div className="flex items-center justify-between gap-2">
           <div>
-            <p className="text-xs uppercase tracking-wide text-slate-500">Your overview</p>
-            <h2 className="text-lg font-semibold text-slate-900">
+            <p className="text-xs uppercase tracking-wide text-tumBlue font-medium">Your overview</p>
+            <h2 className="text-lg font-bold text-tumSecondary">
               Welcome, {junior.name.split(' ')[0]}
             </h2>
           </div>
-          <span className="text-[11px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-100">
-            Junior Buddy · Demo profile
+          <span className="text-[11px] px-3 py-1 rounded-full bg-tumBlue/10 text-tumBlue border border-tumBlue/20 font-medium">
+            Junior Buddy
           </span>
         </div>
 
@@ -35,13 +35,13 @@ export function Dashboard({ junior, seniors, activities, messages }) {
           <StatCard label="Recent messages" value={latestMessages.length} />
         </div>
 
-        <section className="bg-white rounded-2xl shadow-sm border border-slate-100 p-4">
+        <section className="bg-white rounded-2xl card-shadow border border-border p-4">
           <header className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-3">
             <div>
-              <h3 className="text-sm font-semibold text-slate-900">
+              <h3 className="text-sm font-bold text-tumSecondary">
                 Senior buddy suggestions
               </h3>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-tumSecondary/60">
                 Ordered by how well interests, study program and profile text align.
               </p>
             </div>
@@ -51,7 +51,7 @@ export function Dashboard({ junior, seniors, activities, messages }) {
                 placeholder="Search by name or interest"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="rounded-md border border-slate-300 px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-blue-700 focus:border-blue-700 min-w-[180px]"
+                className="rounded-lg border border-border px-3 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-tumBlue/20 focus:border-tumBlue min-w-[180px]"
               />
             </div>
           </header>
@@ -67,10 +67,10 @@ export function Dashboard({ junior, seniors, activities, messages }) {
       </section>
 
       <section className="space-y-4">
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-4">
-          <h3 className="text-sm font-semibold text-slate-900 mb-2">Joined activities</h3>
+        <div className="bg-white rounded-2xl card-shadow border border-border p-4">
+          <h3 className="text-sm font-bold text-tumSecondary mb-2">Joined activities</h3>
           {joinedActivities.length === 0 && (
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-tumSecondary/60">
               You have not joined any activities yet. Use the Activities tab to explore
               events that match your interests.
             </p>
@@ -79,10 +79,10 @@ export function Dashboard({ junior, seniors, activities, messages }) {
             {joinedActivities.map((a) => (
               <div
                 key={a.id}
-                className="border border-slate-100 rounded-lg px-3 py-2 text-xs bg-slate-50/60"
+                className="border border-border rounded-lg px-3 py-2 text-xs bg-background"
               >
-                <p className="font-medium text-slate-900">{a.title}</p>
-                <p className="text-slate-500">
+                <p className="font-medium text-tumSecondary">{a.title}</p>
+                <p className="text-tumSecondary/60">
                   {new Date(a.dateTime).toLocaleString()} · {a.location}
                 </p>
               </div>
@@ -90,20 +90,20 @@ export function Dashboard({ junior, seniors, activities, messages }) {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-4">
-          <h3 className="text-sm font-semibold text-slate-900 mb-2">Recent messages</h3>
+        <div className="bg-white rounded-2xl card-shadow border border-border p-4">
+          <h3 className="text-sm font-bold text-tumSecondary mb-2">Recent messages</h3>
           {latestMessages.length === 0 && (
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-tumSecondary/60">
               No messages yet. Start a conversation from the Messages tab.
             </p>
           )}
           <div className="space-y-2 max-h-64 overflow-auto pr-1">
             {latestMessages.map((m) => (
-              <div key={m.id} className="text-xs border border-slate-100 rounded-lg p-2">
-                <p className="text-[11px] text-slate-500 mb-0.5">
+              <div key={m.id} className="text-xs border border-border rounded-lg p-2">
+                <p className="text-[11px] text-tumSecondary/50 mb-0.5">
                   {new Date(m.timestamp).toLocaleString()}
                 </p>
-                <p className="text-slate-800">{m.text}</p>
+                <p className="text-tumSecondary">{m.text}</p>
               </div>
             ))}
           </div>
@@ -143,7 +143,7 @@ function MatchesList({ junior, seniors, visibleCount, searchTerm, onLoadMore }) 
         {visible.map((m) => (
           <div
             key={m.senior.id}
-            className="border border-slate-100 rounded-xl p-3 flex flex-col gap-2 bg-slate-50/60"
+            className="border border-border rounded-xl p-3 flex flex-col gap-2 bg-background hover:border-tumBlue/30 transition"
           >
             <div className="flex items-center justify-between gap-3 flex-wrap">
               <div className="flex items-center gap-3">
@@ -157,17 +157,17 @@ function MatchesList({ junior, seniors, visibleCount, searchTerm, onLoadMore }) 
                     .join('')}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-slate-900">
+                  <p className="text-sm font-semibold text-tumSecondary">
                     {m.senior.name}
                   </p>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-tumSecondary/60">
                     {m.senior.studyProgram} · {m.senior.age} years
                   </p>
                 </div>
               </div>
             </div>
-            <div className="text-[11px] text-slate-600">
-              <span className="font-medium">Why this match:</span>{' '}
+            <div className="text-[11px] text-tumSecondary/70">
+              <span className="font-medium text-tumBlue">Why this match:</span>{' '}
               {!!m.breakdown.interests.shared.length && (
                 <>
                   shared interests{' '}
@@ -200,7 +200,7 @@ function MatchesList({ junior, seniors, visibleCount, searchTerm, onLoadMore }) 
           <button
             type="button"
             onClick={onLoadMore}
-            className="text-xs font-medium text-blue-700 border border-blue-200 rounded-md px-3 py-1.5 hover:bg-blue-50"
+            className="text-xs font-medium text-tumBlue border border-tumBlue/30 rounded-lg px-4 py-2 hover:bg-tumBlue/5 transition"
           >
             Load more seniors
           </button>
@@ -220,9 +220,9 @@ MatchesList.propTypes = {
 
 function StatCard({ label, value }) {
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-slate-100 px-3.5 py-2.5">
-      <p className="text-[11px] uppercase tracking-wide text-slate-500">{label}</p>
-      <p className="text-xl font-semibold text-slate-900">{value}</p>
+    <div className="bg-white rounded-2xl card-shadow border border-border px-3.5 py-2.5">
+      <p className="text-[11px] uppercase tracking-wide text-tumBlue font-medium">{label}</p>
+      <p className="text-xl font-bold text-tumSecondary">{value}</p>
     </div>
   )
 }

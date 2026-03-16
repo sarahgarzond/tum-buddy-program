@@ -111,14 +111,14 @@ export function Onboarding({ onComplete }) {
   }
 
   return (
-    <div className="max-w-3xl mx-auto bg-white border border-slate-200 rounded-2xl shadow-sm px-6 py-6 md:px-8 md:py-8">
-      <p className="text-xs uppercase tracking-[0.18em] text-slate-500 mb-1">
+    <div className="max-w-3xl mx-auto bg-white border border-border rounded-2xl card-shadow px-6 py-6 md:px-8 md:py-8">
+      <p className="text-xs uppercase tracking-[0.18em] text-tumBlue font-medium mb-1">
         Step 1 of 1
       </p>
-      <h1 className="text-xl md:text-2xl font-semibold text-slate-900 mb-2">
+      <h1 className="text-xl md:text-2xl font-bold text-tumSecondary mb-2">
         Set up your buddy profile
       </h1>
-      <p className="text-sm text-slate-600 mb-5">
+      <p className="text-sm text-tumSecondary/70 mb-5">
         Tell us who you are and what you expect from your time at TUM Campus Heilbronn.
         We will use this information to suggest matching senior buddies and activities.
       </p>
@@ -126,24 +126,24 @@ export function Onboarding({ onComplete }) {
       <form onSubmit={handleSubmit} className="space-y-4 text-sm">
         <div className="grid md:grid-cols-2 gap-4">
           <div className="space-y-1">
-            <label className="block text-xs font-medium text-slate-700">
+            <label className="block text-xs font-medium text-tumSecondary">
               Name
-              <span className="ml-1 text-[11px] text-slate-400">(for the demo)</span>
+              <span className="ml-1 text-[11px] text-tumSecondary/50">(for the demo)</span>
             </label>
             <input
               name="name"
               defaultValue={DEFAULT_NAME}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-700 focus:border-blue-700"
+              className="w-full rounded-lg border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-tumBlue/20 focus:border-tumBlue"
             />
           </div>
           <div className="space-y-1">
-            <label className="block text-xs font-medium text-slate-700">
+            <label className="block text-xs font-medium text-tumSecondary">
               Study program
             </label>
             <select
               name="program"
               defaultValue={PROGRAMS[0]}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm bg-white focus:outline-none focus:ring-1 focus:ring-blue-700 focus:border-blue-700"
+              className="w-full rounded-lg border border-border px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-tumBlue/20 focus:border-tumBlue"
             >
               {PROGRAMS.map((p) => (
                 <option key={p} value={p}>
@@ -155,53 +155,53 @@ export function Onboarding({ onComplete }) {
         </div>
 
         <div className="space-y-1">
-          <label className="block text-xs font-medium text-slate-700">
+          <label className="block text-xs font-medium text-tumSecondary">
             Short description about you
           </label>
           <textarea
             name="bio"
             required
             rows={3}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-700 focus:border-blue-700"
+            className="w-full rounded-lg border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-tumBlue/20 focus:border-tumBlue"
             placeholder="Example: I am starting my first semester in Management & Data Science and I am new to Heilbronn. I enjoy startups, team projects and meeting people from different backgrounds."
           />
         </div>
 
         <div className="space-y-1">
-          <label className="block text-xs font-medium text-slate-700">
+          <label className="block text-xs font-medium text-tumSecondary">
             What do you expect from your university experience?
           </label>
           <textarea
             name="expectations"
             required
             rows={3}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-700 focus:border-blue-700"
+            className="w-full rounded-lg border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-tumBlue/20 focus:border-tumBlue"
             placeholder="Example: I want to build practical skills, join student initiatives and better understand the German working culture."
           />
         </div>
 
         <div className="space-y-2">
-          <p className="text-xs font-medium text-slate-700">
+          <p className="text-xs font-medium text-tumSecondary">
             Which activities and topics are you interested in?
           </p>
           <div className="grid md:grid-cols-3 gap-2 max-h-64 overflow-auto pr-1">
             {INTEREST_OPTIONS.map((opt) => (
               <label
                 key={opt}
-                className="border border-slate-200 rounded-lg px-3 py-2 flex items-start gap-2 text-xs cursor-pointer hover:border-[#0065BD33]"
+                className="border border-border rounded-lg px-3 py-2 flex items-start gap-2 text-xs cursor-pointer hover:border-tumBlue/30 hover:bg-tumBlue/5 transition"
               >
-                <input type="checkbox" name={`interest-${opt}`} className="mt-0.5" />
-                <span className="text-slate-700">{opt}</span>
+                <input type="checkbox" name={`interest-${opt}`} className="mt-0.5 accent-tumBlue" />
+                <span className="text-tumSecondary">{opt}</span>
               </label>
             ))}
           </div>
           <div className="space-y-1 pt-1">
-            <label className="block text-xs font-medium text-slate-700">
+            <label className="block text-xs font-medium text-tumSecondary">
               Other interests (optional, comma separated)
             </label>
             <input
               name="interestsOther"
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#0065BD] focus:border-[#0065BD]"
+              className="w-full rounded-lg border border-border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-tumBlue/20 focus:border-tumBlue"
               placeholder="e.g. chess, photography, podcasts"
             />
           </div>
@@ -210,7 +210,7 @@ export function Onboarding({ onComplete }) {
         <div className="flex items-center justify-end pt-2">
           <button
             type="submit"
-            className="inline-flex items-center gap-2 rounded-full bg-blue-700 text-white px-5 py-2 text-sm font-medium hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-offset-1 focus:ring-offset-white"
+            className="inline-flex items-center gap-2 rounded-xl bg-tumBlue text-white px-6 py-2.5 text-sm font-medium hover:bg-tumSecondary focus:outline-none focus:ring-2 focus:ring-tumBlue focus:ring-offset-2 transition"
           >
             Continue to dashboard
           </button>

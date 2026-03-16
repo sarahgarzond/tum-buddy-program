@@ -68,13 +68,13 @@ function ConversationShell({
       <section className="space-y-3">
         {!compact && (
           <header>
-            <p className="text-xs uppercase tracking-wide text-slate-500">
+            <p className="text-xs uppercase tracking-wide text-tumBlue font-medium">
               Conversations
             </p>
-            <h2 className="text-lg font-semibold text-slate-900">Messages</h2>
+            <h2 className="text-lg font-bold text-tumSecondary">Messages</h2>
           </header>
         )}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 divide-y divide-slate-100 overflow-hidden">
+        <div className="bg-white rounded-2xl card-shadow border border-border divide-y divide-border overflow-hidden">
           {seniors.map((senior) => {
             const isActive = senior.id === activeBuddy?.id
             const unreadCount = messages.filter(
@@ -88,7 +88,7 @@ function ConversationShell({
                 key={senior.id}
                 onClick={() => setActiveBuddyId(senior.id)}
                 className={`w-full flex items-center justify-between gap-2 px-3 py-2.5 text-left text-xs transition ${
-                  isActive ? 'bg-sky-50' : 'bg-white hover:bg-slate-50'
+                  isActive ? 'bg-tumBlue/5' : 'bg-white hover:bg-background'
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -102,14 +102,14 @@ function ConversationShell({
                       .join('')}
                   </div>
                   <div>
-                    <p className="font-medium text-slate-900">{senior.name}</p>
-                    <p className="text-[11px] text-slate-500 line-clamp-1">
+                    <p className="font-medium text-tumSecondary">{senior.name}</p>
+                    <p className="text-[11px] text-tumSecondary/60 line-clamp-1">
                       {senior.studyProgram}
                     </p>
                   </div>
                 </div>
                 {unreadCount > 0 && (
-                  <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-tumBlue/10 text-tumBlue border border-tumBlue/30">
                     {unreadCount}
                   </span>
                 )}
@@ -119,10 +119,10 @@ function ConversationShell({
         </div>
       </section>
 
-      <section className="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-100 min-h-[260px]">
+      <section className="flex flex-col bg-white rounded-2xl card-shadow border border-border min-h-[260px]">
         {activeBuddy ? (
           <>
-            <div className="border-b border-slate-100 px-4 py-3 flex items-center justify-between gap-3">
+            <div className="border-b border-border px-4 py-3 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <div
                   className={`w-8 h-8 rounded-xl flex items-center justify-center text-white text-xs font-semibold ${activeBuddy.avatarColor}`}
@@ -134,19 +134,19 @@ function ConversationShell({
                     .join('')}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-slate-900">
+                  <p className="text-sm font-semibold text-tumSecondary">
                     {activeBuddy.name}
                   </p>
-                  <p className="text-[11px] text-slate-500">Senior Buddy</p>
+                  <p className="text-[11px] text-tumBlue">Senior Buddy</p>
                 </div>
               </div>
-              <p className="text-[10px] text-slate-500">
+              <p className="text-[10px] text-tumSecondary/50">
                 Messages are stored in-memory for this demo.
               </p>
             </div>
-            <div className="flex-1 overflow-auto px-4 py-3 space-y-2 bg-slate-50/60">
+            <div className="flex-1 overflow-auto px-4 py-3 space-y-2 bg-background">
               {conversationMessages.length === 0 && (
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-tumSecondary/60">
                   Start the conversation by sending your first message.
                 </p>
               )}
@@ -173,11 +173,11 @@ function ConversationShell({
                     <div
                       className={`max-w-[70%] rounded-2xl px-3 py-2 ${
                         isOwn
-                          ? 'bg-blue-700 text-white rounded-br-sm'
-                          : 'bg-white text-slate-800 border border-slate-200 rounded-bl-sm'
+                          ? 'bg-tumBlue text-white rounded-br-sm'
+                          : 'bg-white text-tumSecondary border border-border rounded-bl-sm'
                       }`}
                     >
-                      <p className="text-[11px] mb-0.5">
+                      <p className="text-[11px] mb-0.5 opacity-70">
                         {new Date(m.timestamp).toLocaleString()}
                       </p>
                       <p className="leading-snug">{m.text}</p>
@@ -188,23 +188,23 @@ function ConversationShell({
             </div>
             <form
               onSubmit={handleSubmit}
-              className="border-t border-slate-100 px-3 py-2 flex items-center gap-2"
+              className="border-t border-border px-3 py-2 flex items-center gap-2"
             >
               <input
                 name="text"
                 placeholder="Write a message..."
-                className="flex-1 rounded-full border border-slate-200 px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-700 focus:border-blue-700"
+                className="flex-1 rounded-full border border-border px-3 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-tumBlue/20 focus:border-tumBlue"
               />
               <button
                 type="submit"
-                className="rounded-full bg-blue-700 text-white px-3 py-1.5 text-xs font-medium hover:bg-blue-800 transition"
+                className="rounded-full bg-tumBlue text-white px-4 py-1.5 text-xs font-medium hover:bg-tumSecondary transition"
               >
                 Send
               </button>
             </form>
           </>
         ) : (
-          <div className="flex-1 flex items-center justify-center text-xs text-slate-500 px-4">
+          <div className="flex-1 flex items-center justify-center text-xs text-tumSecondary/60 px-4">
             No senior buddies configured.
           </div>
         )}
