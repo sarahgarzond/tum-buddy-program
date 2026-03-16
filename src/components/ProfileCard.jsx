@@ -4,7 +4,7 @@ export function ProfileCard({ profile, highlightRole }) {
   if (!profile) return null
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-4 flex gap-4">
+    <div className="bg-white rounded-2xl card-shadow border border-border p-4 flex gap-4">
       <div
         className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white font-semibold shrink-0 ${profile.avatarColor}`}
       >
@@ -16,8 +16,8 @@ export function ProfileCard({ profile, highlightRole }) {
       </div>
       <div className="space-y-1">
         <div className="flex items-center gap-2 flex-wrap">
-          <p className="font-semibold text-slate-900">{profile.name}</p>
-          <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">
+          <p className="font-semibold text-tumSecondary">{profile.name}</p>
+          <span className="text-xs px-2 py-0.5 rounded-full bg-background text-tumSecondary/70 border border-border">
             {profile.age} · {profile.studyProgram}
           </span>
           {highlightRole && (
@@ -26,12 +26,12 @@ export function ProfileCard({ profile, highlightRole }) {
             </span>
           )}
         </div>
-        <p className="text-xs text-slate-600 line-clamp-3">{profile.bio}</p>
+        <p className="text-xs text-tumSecondary/70 line-clamp-3">{profile.bio}</p>
         <div className="flex flex-wrap gap-1.5 pt-1">
           {profile.interests.map((interest) => (
             <span
               key={interest}
-              className="text-[11px] px-2 py-0.5 rounded-full bg-sky-50 text-sky-800 border border-sky-100"
+              className="text-[11px] px-2 py-0.5 rounded-full bg-tumBlue/10 text-tumBlue border border-tumBlue/20"
             >
               {interest}
             </span>

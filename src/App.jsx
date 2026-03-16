@@ -76,54 +76,108 @@ function App() {
 
   if (mode === 'landing') {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-10">
-        <div className="max-w-xl w-full bg-white border border-slate-200 rounded-2xl shadow-sm px-6 py-6 md:px-8 md:py-8 space-y-4">
-          <h1 className="text-xl md:text-2xl font-semibold text-slate-900">
-            Buddy Program – Demo access
-          </h1>
-          <p className="text-sm text-slate-600">
-            Choose how you would like to explore the Buddy Program prototype.
-          </p>
-          <div className="space-y-3">
-            <button
-              type="button"
-              onClick={() => setMode('onboarding')}
-              className="w-full text-left rounded-md border border-slate-200 px-4 py-3 text-sm hover:border-blue-700 hover:bg-blue-50"
-            >
-              <span className="block font-semibold text-slate-900">
-                Sign up as a new junior buddy
-              </span>
-              <span className="block text-xs text-slate-600">
-                Enter your own profile, study program and interests to generate personal
-                suggestions.
-              </span>
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setCurrentJunior(baseJunior)
-                setMode('demo')
-              }}
-              className="w-full text-left rounded-md border border-slate-200 px-4 py-3 text-sm hover:border-slate-300"
-            >
-              <span className="block font-semibold text-slate-900">
-                Continue as Maximilian Bauer (demo)
-              </span>
-              <span className="block text-xs text-slate-600">
-                Use a prefilled profile to quickly show how matching, activities and
-                messages work.
-              </span>
-            </button>
+      <div className="min-h-screen bg-background flex flex-col">
+        {/* Header */}
+        <header className="header-gradient">
+          <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+            <img 
+              src="/fs-hn-logo.jpg" 
+              alt="FS HN Logo" 
+              className="h-10 w-10 rounded-lg object-cover"
+            />
+            <div>
+              <p className="text-[11px] tracking-[0.16em] uppercase text-white/70">
+                TUM Student Council
+              </p>
+              <p className="font-semibold text-white leading-tight text-sm">
+                Fachschaft Heilbronn
+              </p>
+            </div>
           </div>
-        </div>
+        </header>
+
+        {/* Main content */}
+        <main className="flex-1 flex items-center justify-center px-4 py-10">
+          <div className="max-w-xl w-full bg-white border border-border rounded-2xl card-shadow px-6 py-8 md:px-8 md:py-10 space-y-6">
+            <div className="text-center space-y-2">
+              <p className="text-xs uppercase tracking-[0.16em] text-tumBlue font-medium">
+                Welcome to the
+              </p>
+              <h1 className="text-2xl md:text-3xl font-bold text-tumSecondary">
+                Buddy Program
+              </h1>
+              <p className="text-sm text-tumSecondary/70 max-w-md mx-auto">
+                Connect with senior students who can help guide you through your first semester at TUM Campus Heilbronn.
+              </p>
+            </div>
+            
+            <div className="space-y-3">
+              <button
+                type="button"
+                onClick={() => setMode('onboarding')}
+                className="w-full text-left rounded-xl border-2 border-tumBlue/20 px-5 py-4 text-sm hover:border-tumBlue hover:bg-tumBlue/5 transition group"
+              >
+                <span className="block font-semibold text-tumSecondary group-hover:text-tumBlue transition">
+                  Sign up as a new junior buddy
+                </span>
+                <span className="block text-xs text-tumSecondary/60 mt-1">
+                  Enter your own profile, study program and interests to generate personal suggestions.
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentJunior(baseJunior)
+                  setMode('demo')
+                }}
+                className="w-full text-left rounded-xl border-2 border-border px-5 py-4 text-sm hover:border-tumSecondary/30 transition"
+              >
+                <span className="block font-semibold text-tumSecondary">
+                  Continue as Maximilian Bauer (demo)
+                </span>
+                <span className="block text-xs text-tumSecondary/60 mt-1">
+                  Use a prefilled profile to quickly show how matching, activities and messages work.
+                </span>
+              </button>
+            </div>
+          </div>
+        </main>
+
+        {/* Footer */}
+        <footer className="border-t border-border bg-white">
+          <div className="max-w-6xl mx-auto px-4 py-4 text-xs text-tumSecondary/60 flex flex-wrap justify-between gap-2">
+            <span>Fachschaft Heilbronn - TUM Student Council</span>
+            <span>Buddy Program Prototype</span>
+          </div>
+        </footer>
       </div>
     )
   }
 
   if (mode === 'onboarding' && !currentJunior) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-start md:items-center justify-center px-4 py-10">
-        <Onboarding onComplete={handleOnboardingComplete} />
+      <div className="min-h-screen bg-background flex flex-col">
+        {/* Header */}
+        <header className="header-gradient">
+          <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+            <img 
+              src="/fs-hn-logo.jpg" 
+              alt="FS HN Logo" 
+              className="h-10 w-10 rounded-lg object-cover"
+            />
+            <div>
+              <p className="text-[11px] tracking-[0.16em] uppercase text-white/70">
+                TUM Student Council
+              </p>
+              <p className="font-semibold text-white leading-tight text-sm">
+                Buddy Program
+              </p>
+            </div>
+          </div>
+        </header>
+        <main className="flex-1 flex items-start md:items-center justify-center px-4 py-10">
+          <Onboarding onComplete={handleOnboardingComplete} />
+        </main>
       </div>
     )
   }

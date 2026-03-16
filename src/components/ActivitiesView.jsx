@@ -26,10 +26,10 @@ export function ActivitiesView({ activities, onToggleJoin, currentUser, seniors 
     <div className="space-y-4">
       <header className="flex items-center justify-between gap-2">
         <div>
-          <p className="text-xs uppercase tracking-wide text-slate-500">
-            Activities &amp; events
+          <p className="text-xs uppercase tracking-wide text-tumBlue font-medium">
+            Activities & events
           </p>
-          <h2 className="text-lg font-semibold text-slate-900">Explore activities</h2>
+          <h2 className="text-lg font-bold text-tumSecondary">Explore activities</h2>
         </div>
       </header>
 
@@ -41,27 +41,27 @@ export function ActivitiesView({ activities, onToggleJoin, currentUser, seniors 
             return (
               <div
                 key={activity.id}
-                className="rounded-xl bg-[#F5F5F5] border border-slate-200 px-4 py-4 space-y-2"
+                className="rounded-xl bg-white border border-border px-4 py-4 space-y-2 card-shadow hover:border-tumBlue/30 transition"
               >
                 <div className="flex items-start justify-between gap-3 flex-wrap">
                   <div>
-                    <p className="text-sm font-semibold text-slate-900">
+                    <p className="text-sm font-semibold text-tumSecondary">
                       {activity.title}
                     </p>
-                    <p className="text-xs text-slate-500 mb-1">
+                    <p className="text-xs text-tumSecondary/60 mb-1">
                       {new Date(activity.dateTime).toLocaleString()} ·{' '}
                       {activity.location}
                     </p>
-                    <p className="text-xs text-slate-600 mb-1">
+                    <p className="text-xs text-tumSecondary/70 mb-1">
                       {activity.description}
                     </p>
                   </div>
                   <button
                     onClick={() => onToggleJoin(activity.id)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-medium border transition ${
+                    className={`px-4 py-1.5 rounded-lg text-xs font-medium border transition ${
                       isJoined
-                        ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                        : 'bg-blue-700 text-white border-blue-700 hover:bg-blue-800'
+                        ? 'bg-tumBlue/10 text-tumBlue border-tumBlue/30'
+                        : 'bg-tumBlue text-white border-tumBlue hover:bg-tumSecondary'
                     }`}
                   >
                     {isJoined ? 'Joined' : 'Join'}
@@ -76,13 +76,13 @@ export function ActivitiesView({ activities, onToggleJoin, currentUser, seniors 
                         key={interest}
                         className={`text-[11px] px-2 py-0.5 rounded-full border ${
                           matchesUser
-                            ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                            : 'bg-slate-50 text-slate-700 border-slate-200'
+                            ? 'bg-tumBlue/10 text-tumBlue border-tumBlue/30'
+                            : 'bg-background text-tumSecondary/70 border-border'
                         }`}
                       >
                         {interest}
                         {matchesUser && (
-                          <span className="ml-1 text-[9px] uppercase tracking-wide">
+                          <span className="ml-1 text-[9px] uppercase tracking-wide font-medium">
                             You
                           </span>
                         )}
@@ -92,25 +92,25 @@ export function ActivitiesView({ activities, onToggleJoin, currentUser, seniors 
                 </div>
 
                 {suggested && (
-                  <p className="text-[11px] text-slate-500">
+                  <p className="text-[11px] text-tumSecondary/60">
                     Suggested for you together with{' '}
-                    <span className="font-medium text-slate-700">
+                    <span className="font-medium text-tumBlue">
                       {suggested.senior.name}
                     </span>{' '}
                     based on shared interests.
                   </p>
                 )}
 
-                <p className="text-[11px] text-slate-500">
+                <p className="text-[11px] text-tumSecondary/50">
                   Participants: {activity.participants.length}
                 </p>
               </div>
             )
           })}
         </div>
-        <aside className="space-y-3 text-xs text-slate-600">
-          <div className="rounded-xl bg-white border border-slate-200 px-4 py-4">
-            <h3 className="text-sm font-semibold text-slate-900 mb-2">
+        <aside className="space-y-3 text-xs text-tumSecondary/70">
+          <div className="rounded-xl bg-white border border-border px-4 py-4 card-shadow">
+            <h3 className="text-sm font-bold text-tumSecondary mb-2">
               Activities in this prototype
             </h3>
             <p className="mb-1">
